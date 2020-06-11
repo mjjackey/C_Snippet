@@ -11,7 +11,7 @@ extern int memory_init()
   {
 	 return -1;
   }
-  memset(*temp_pointer, 0, sizeof(char *) * number);    ///    
+  memset(*temp_pointer, 0, sizeof(char *) * number);    /// wrong    
   for(int i=0; i<number; i++)
   {
 	  temp_pointer[i]=(char *)malloc(sizeof(char) * 60);
