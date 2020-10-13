@@ -19,7 +19,6 @@ int memory_init()
 	    return -1;
     }
     //memset(*temp_pointer, 0, sizeof(char *) * number);    /// wrong   
-    //*temp_pointer = (char*)malloc(sizeof(char) * number2);
     for(int i=0; i<STR_NUM; i++)
     {
         *(temp_pointer + i) =(char *)malloc(sizeof(char) * CHR_NUM);  //or replace *(temp_pointer + i) to temp_pointer[i]
@@ -49,11 +48,11 @@ extern void momory_test()
     int r = memory_init();
     printf("%d %s\n", r, temp_pointer[STR_NUM-1]);
     printf("%s\n", *temp_pointer);
-    //printf("%s\n", **temp_pointer);  //wrong
-    //printf("%s\n", temp_pointer[0][0]); //wrong
+    printf("%c\n", **temp_pointer); 
+    printf("%c\n", temp_pointer[0][0]);
     printf("%s\n", *(temp_pointer+1));
-    //printf("%s\n", *(temp_pointer + 1)[0]); //wrong
-    //printf("%s\n", *(*(temp_pointer + 1)+1)); //wrong
+    printf("%c\n", *(temp_pointer + 1)[0]); 
+    printf("%c\n", *(*(temp_pointer + 1)+1)); 
     memory_free();
 }
 
