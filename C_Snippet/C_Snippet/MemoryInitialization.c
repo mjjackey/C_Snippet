@@ -4,8 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define number 8
-#define number2 60
+#define STR_NUM 8
+#define CHR_NUM 60
 
 char** temp_pointer = NULL;
 
@@ -13,21 +13,21 @@ int memory_init()
 {
     /*char** temp_pointer=NULL;*/
   
-    temp_pointer=(char **)malloc(sizeof(char *) * number); 
+    temp_pointer=(char **)malloc(sizeof(char *) * STR_NUM); 
     if(temp_pointer==NULL) 
     {
 	    return -1;
     }
     //memset(*temp_pointer, 0, sizeof(char *) * number);    /// wrong   
     //*temp_pointer = (char*)malloc(sizeof(char) * number2);
-    for(int i=0; i<number; i++)
+    for(int i=0; i<STR_NUM; i++)
     {
-        *(temp_pointer + i) =(char *)malloc(sizeof(char) * number2);  //or replace *(temp_pointer + i) to temp_pointer[i]
+        *(temp_pointer + i) =(char *)malloc(sizeof(char) * CHR_NUM);  //or replace *(temp_pointer + i) to temp_pointer[i]
         if (*(temp_pointer + i) == NULL) 
         {
             return -1;
         }
-	    memset(*(temp_pointer + i), '\0', number2); 
+	    memset(*(temp_pointer + i), '\0', CHR_NUM); 
         strcpy_s(*(temp_pointer + i),sizeof("hello"), "hello");
     }
 
@@ -37,7 +37,7 @@ int memory_init()
 
 void memory_free()
 {
-    for (int i = 0; i < number; i++)
+    for (int i = 0; i < STR_NUM; i++)
     {
         if (!*(temp_pointer+i)) free(temp_pointer[i]);
     }
@@ -47,7 +47,7 @@ void memory_free()
 extern void momory_test()
 {
     int r = memory_init();
-    printf("%d %s\n", r, temp_pointer[number-1]);
+    printf("%d %s\n", r, temp_pointer[STR_NUM-1]);
     printf("%s\n", *temp_pointer);
     //printf("%s\n", **temp_pointer);  //wrong
     //printf("%s\n", temp_pointer[0][0]); //wrong
